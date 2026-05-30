@@ -2,7 +2,7 @@
 
 # Barrel Organ
 
-Status: L2 V5 build-packet candidate
+Status: L3-candidate V5 packet (deepened: protocols, tolerances, assembly, FMEA)...
 
 This repository is a V5 L2 planning packet for a hand-cranked barrel organ. A
 pinned barrel encodes the music, the crank drives the barrel and bellows, pins
