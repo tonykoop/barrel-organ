@@ -4,72 +4,117 @@ instrument: Barrel Organ
 slug: barrel-organ
 family: woodwind
 class: hand-cranked mechanical organ with pinned barrel and windchest
-readiness: L1 concept packet
+readiness: L2 V5 build-packet candidate
 authority: concept_only / pending_measurement
 ---
 
 # Barrel Organ Design
 
-## Concept
+## Design Thesis
 
-A barrel organ is a mechanical organ in which a rotating pinned barrel stores the tune. As the player turns a crank, the barrel advances through the tune and a bellows supplies wind. Pins on the barrel lift followers, keys, or trackers. Those motions open pallets in the windchest, allowing wind to reach selected organ pipes.
+A barrel organ is a mechanical wind instrument where a crank links three jobs:
+advance the music program, supply wind, and pace the player's performance. The
+barrel stores note events as pins or raised features. Followers or trackers read
+the program and open pallets in a windchest. Wind from bellows and a possible
+reservoir speaks a pipe rank.
 
-This L1 packet captures the real mechanism and design questions only. It does not define barrel diameter, pin pitch, gear ratio, wind pressure, pipe scale, pipe lengths, tuning, or cut geometry.
+This L2 packet deepens the architecture enough for review and mule planning. It
+does not define barrel diameter, pin pitch, gear ratio, pallet travel, wind
+pressure, pipe scale, pipe length, tuning, or cut geometry.
 
-## Mechanical Program
+## Subsystem Plan
 
-The barrel is the music program. Pins, staples, or raised features on its surface represent note events. A follower row reads the barrel as it turns. Each follower connects to a tracker or lever that opens a corresponding pallet.
+### Program Barrel
 
-The first design decision is whether the barrel should be removable for different tunes or fixed as a single study program. A removable barrel is musically richer but makes alignment, indexing, and wear control more demanding.
+The barrel program is the mechanical score. The first review should decide
+whether the study mule uses a fixed barrel, removable barrel, or replaceable
+pinned strip. Each option remains `pending_measurement` because pin retention,
+follower wear, indexing, reset-to-start behavior, and timing repeatability have
+not been tested.
 
-Open questions for the barrel mechanism:
+Planned evidence:
 
-- How should the crank motion synchronize bellows pumping and barrel rotation?
-- How much lost motion is acceptable before note timing feels sloppy?
-- Should the followers read pins directly or through a replaceable tracker strip?
-- How will the barrel index to the start of a tune without damaging followers?
-- What materials reduce wear and noise at the pin/follower contact?
+- barrel indexing method chosen and tested;
+- follower contact material selected from a wear/noise test;
+- tune-start registration checked without pipework;
+- pin-retention method reviewed before any drill/CAD/DXF work.
 
-## Wind System
+### Crank And Drive Train
 
-The wind path is:
+The crank must coordinate barrel advance and bellows pumping. A future drive
+table should record crank cadence, lost motion, backlash, and reset behavior,
+but this packet assigns no ratios or wheel sizes. The first mule should allow
+the barrel drive and bellows drive to be isolated so timing and wind faults can
+be diagnosed separately.
+
+### Followers, Trackers, And Pallets
+
+The action path is:
 
 ```text
-hand crank -> bellows -> reservoir or regulator -> windchest -> pallet valves -> pipes
+barrel pin -> follower -> tracker or lever -> pallet -> pipe channel
 ```
 
-The bellows must create enough steadiness that the pipes speak while the crank is turning. A reservoir or regulator can smooth crank pulses and keep the windchest from sagging when multiple pallets open. This L1 packet does not assign wind-pressure or reservoir values.
+The review target is a small number of channels with visible motion and easy
+adjustment. Authority remains `pending_measurement` until lift, return force,
+friction, sealing, and noise are measured.
 
-## Windchest And Pallets
+### Bellows, Reservoir, And Windchest
 
-The windchest distributes air to pipe channels. Each pallet is normally closed and opens only when its tracker is lifted by the barrel program. The pallet system must seal quietly, reset reliably, and tolerate repeated mechanical actuation.
+The bellows and optional reservoir must smooth crank pulses before the windchest
+feeds pipe channels. The L2 packet records the need for a wind mule but does
+not set pressure, flow, reservoir volume, gasket dimensions, or channel layout.
+The windchest should be serviceable: pallet faces, gaskets, springs, and tracker
+attachments need access before tonal work starts.
 
-The first mule should test pallet sealing, travel, return force, tracker friction, and timing repeatability before any pipe rank is added.
+### Pipe Rank Options
 
-## Pipe Families
+The first voice may be flue pipes, reed pipes, or one comparison channel of
+each. This packet keeps both families open because package size, voicing effort,
+wind demand, and reliability are not yet measured. No pipe pitch, scale, mouth
+geometry, reed dimensions, or tuning system is claimed.
 
-The primary voice can be flue pipes, reed pipes, or a mixed study. Flue pipes use a wind sheet across a mouth and lip. Reed pipes use a vibrating reed coupled to a resonator. Flue pipes may be simpler for an initial visual demonstration; reed pipes may be more compact but add voicing and reed regulation complexity.
+### Case And Service Access
 
-No pipe length, pitch table, scale, reed dimension, mouth geometry, or tuning plan is specified here. Those belong in a measured or reference-grounded L2 packet.
-
-## Portable Form
-
-The instrument should be a self-contained crank-operated box: crank, barrel, bellows, windchest, pipes, and access panels. The enclosure must make the mechanism inspectable because pinned-barrel organs are maintenance-heavy. Exact case proportions, handle placement, weight, and service clearances are pending mockup.
+The case is treated as an inspection frame rather than finished furniture. It
+must expose the barrel, follower row, tracker path, windchest, and bellows for
+testing. Handles, enclosure layout, mass, clearances, and access panels remain
+`pending_measurement`.
 
 ## Parametric Intent
 
-Future design tables should separate:
+Future tables should use explicit status fields before numbers appear:
 
-- barrel program layout and indexing;
-- crank-to-barrel and crank-to-bellows transmission;
-- follower, tracker, and pallet geometry;
-- windchest channels and sealing surfaces;
-- bellows and reservoir behavior;
-- pipe family, pipe scale, and measured tuning;
-- case access, noise control, and service adjustments.
+- `barrel_program_status`
+- `barrel_indexing_status`
+- `pin_retention_status`
+- `follower_material_status`
+- `tracker_motion_status`
+- `pallet_seal_status`
+- `crank_drive_status`
+- `bellows_wind_status`
+- `reservoir_need_status`
+- `windchest_channel_status`
+- `pipe_rank_status`
+- `case_access_status`
 
-Every numeric field in those future tables should carry provenance: measured mule, reviewed drawing, supplier specification, CAD parameter, or `estimate_pending_measurement`.
+Numeric fields must be labeled as `estimate_pending_measurement` until they
+come from a measured mule, reviewed drawing, supplier specification, or
+validated design table.
 
-## V5 Boundary
+## L2 Mule Plan
 
-This is an L1 concept packet. It is not a barrel drilling plan, pinned tune layout, pipe-scale chart, wind-pressure design, CAD source, DXF release, or fabrication package.
+1. Build or mock the crank-to-barrel motion without pipework.
+2. Add a follower/tracker/pallet channel and log repeatability.
+3. Add bellows and a simple windchest test channel.
+4. Compare a flue-pipe and/or reed-pipe response only after wind steadiness and
+   pallet sealing are understood.
+5. Update `visual-output-register.csv`, `bom.csv`, and `cut-list.csv` before
+   any CAD, DXF, or tuning table is introduced.
+
+## Authority Boundary
+
+This is an L2 planning packet. It is not a barrel drilling plan, pinned tune
+layout, pipe-scale chart, wind-pressure design, CAD source, DXF release, or
+fabrication package. Every artifact remains either `concept_only` or
+`pending_measurement`.
