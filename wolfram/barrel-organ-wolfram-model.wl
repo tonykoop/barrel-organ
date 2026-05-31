@@ -137,7 +137,7 @@ barrelOrganManipulate =
       Style["Barrel organ pinned-program and pipe-rank relationship study", 14, Bold],
       "Reference only: every numeric input is an estimate pending measurement.",
       Dataset[{
-        <|"branch" -> "open_open flue pipe",
+        <|"branch" -> "open-open flue pipe",
           "frequencyHz" -> openPipeFrequency[
             speedOfSound,
             pipeLength,
@@ -215,3 +215,5 @@ barrelOrganManipulate =
     {{pipeLengthRange, pipeLengthRangeEstimate, "plot length range estimate (m)"}, ControlType -> None},
     SaveDefinitions -> True
   ];
+
+barrelOrganManipulate
