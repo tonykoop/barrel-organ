@@ -1,0 +1,42 @@
+{
+  "product": "barrel-organ",
+  "pipeline": "studiopipeline:evolution-pipeline",
+  "stage": "0-intake",
+  "master_revision": "rev-A (pre-commit intake, 2026-07-01)",
+  "generated": "2026-07-01",
+  "cad_masters": [
+    {
+      "path": "design.md",
+      "format": "design-brief-source",
+      "sha256": "dd24df2b7bb43d25f37206e2ab8fab49dfe91d74d780bf9f4af0bee7459f9887",
+      "authority": "concept_only",
+      "lossy": false,
+      "notes": "Subsystem plan and parametric intent; no dimensions, tuning, wind-pressure, or CAD geometry."
+    },
+    {
+      "path": "parametric-design-table.md",
+      "format": "symbolic-design-table",
+      "sha256": "d7bef093ef3273e2a9d0be02d43f5030013fdb146d6c572c9eb309ed198b5d6e",
+      "authority": "pending_measurement",
+      "lossy": false,
+      "notes": "Symbolic relationship table only; every row Authority=pending_measurement, no numeric values. This is the closest thing this repo has to a design table."
+    },
+    {
+      "path": "wolfram/barrel-organ-wolfram-model.wl",
+      "format": "wolfram-source",
+      "sha256": "a896902323377d93568fead0f56e5ae558c9faf00131e51d47f3285120ebfb6a",
+      "authority": "reference_only",
+      "lossy": false,
+      "notes": "Source-only (not executed); hand-authored symbolic pinned-barrel/windchest/pipe-rank relationship model; every numeric input is commented as an estimate pending measurement."
+    },
+    {
+      "path": "barrel-organ-starter.wl",
+      "format": "wolfram-source",
+      "sha256": "7464e76f8540c2677e10d324e1c8d2e95881cb05ff9160fc778b9d5f8a874415",
+      "authority": "reference_only",
+      "lossy": false,
+      "notes": "Thin Wolfram entry point; source-only, not fabrication authority."
+    }
+  ],
+  "notes": "No cad/barrel-organ.scad (or equivalent OpenSCAD/DXF) master exists yet and none was authored during the 2026-07-01 V5 refresh pass — see cad/README.md for the full no-scad rationale. This is a complex mechanism repo (pinned barrel + crank/drive train + followers/trackers/pallets + bellows/reservoir + windchest + pipe rank + case) whose design tables are explicitly symbolic-only (parametric-design-table.md) with no numeric barrel diameter, pin/follower pitch, windchest channel count, or bellows footprint to source a parametric envelope from. design.md and the Wolfram model above are cited as the current best-available intent sources instead of a CAD master. Gate A (Alpha workspace compile) not yet run."
+}
