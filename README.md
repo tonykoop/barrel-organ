@@ -2,7 +2,7 @@
 
 # Barrel Organ
 
-Status: L3-candidate V5 packet (deepened: protocols, tolerances, assembly, FMEA)...
+**Status:** L2 V5 build-packet candidate (deepened: protocols, tolerances, assembly, FMEA)
 
 This repository is a V5 L2 planning packet for a hand-cranked barrel organ. A
 pinned barrel encodes the music, the crank drives the barrel and bellows, pins
@@ -35,6 +35,13 @@ that the musical geometry is known.
 - `cad/mcp-session-log.md` - provenance stub; no MCP or CAD session was run.
 - `decision-record.md` - qmd Step 0 result, decisions, open questions, and L2
   promotion gates.
+- `sourcing.csv` / `validation.csv` / `risks.md` / `drawing-brief.md` - V5
+  baseline files; spec-first sourcing, promotion-matrix measurement gates,
+  risk digest, and witness/mule sketch topology (no dimensions).
+- `cad/README.md` - honest rationale for why no `cad/barrel-organ.scad`
+  parametric master exists yet (design tables are symbolic-only).
+- `evolution/` - Stage 0 evolution-pipeline intake (design intent, revision
+  register, master manifest); Gate A not yet run.
 
 ## L2 Next Work
 
